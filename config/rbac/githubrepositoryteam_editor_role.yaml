@@ -1,0 +1,31 @@
+# permissions for end users to edit githubrepositoryteams.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: githubrepositoryteam-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: knot-githubrepositoryteamoperator
+    app.kubernetes.io/part-of: knot-githubrepositoryteamoperator
+    app.kubernetes.io/managed-by: kustomize
+  name: githubrepositoryteam-editor-role
+rules:
+- apiGroups:
+  - github.repository.team.nttdata.com
+  resources:
+  - githubrepositoryteams
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - github.repository.team.nttdata.com
+  resources:
+  - githubrepositoryteams/status
+  verbs:
+  - get

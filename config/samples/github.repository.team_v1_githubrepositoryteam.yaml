@@ -1,0 +1,12 @@
+apiVersion: github.repository.team.nttdata.com/v1
+kind: GithubRepositoryTeam
+metadata:
+  labels:
+    app.kubernetes.io/name: githubrepositoryteam
+    app.kubernetes.io/instance: githubrepositoryteam-sample
+    app.kubernetes.io/part-of: knot-githubrepositoryteamoperator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: knot-githubrepositoryteamoperator
+  name: githubrepositoryteam-sample
+spec:
+  # TODO(user): Add fields here

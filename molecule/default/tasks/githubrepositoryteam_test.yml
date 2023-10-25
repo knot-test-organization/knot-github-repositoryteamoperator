@@ -1,0 +1,18 @@
+---
+- name: Create the github.repository.team.nttdata.com/v1.GithubRepositoryTeam
+  k8s:
+    state: present
+    namespace: '{{ namespace }}'
+    definition: "{{ lookup('template', '/'.join([samples_dir, cr_file])) | from_yaml }}"
+    wait: yes
+    wait_timeout: 300
+    wait_condition:
+      type: Successful
+      status: "True"
+  vars:
+    cr_file: 'github.repository.team_v1_githubrepositoryteam.yaml'
+
+- name: Add assertions here
+  assert:
+    that: false
+    fail_msg: FIXME Add real assertions for your operator

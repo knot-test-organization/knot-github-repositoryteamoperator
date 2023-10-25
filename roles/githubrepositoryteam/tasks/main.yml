@@ -1,0 +1,22 @@
+---
+# tasks file for GithubRepositoryTeam
+- name: set PAT variable
+  set_fact:
+    PAT: "{{ lookup('env','PAT') }}"
+
+- name: set team_slug variable
+  set_fact:
+    team_slug: "{{ team_slug_name | lower | replace(' ', '-') }}"
+
+- name: Add a team into the repository
+  uri:
+    url: "https://api.github.com/orgs/{{ organization_name }}/teams/{{ team_slug }}/repos/{{ organization_name }}/{{ repo_name }}"
+    method: PUT
+    headers:
+      Accept: "application/vnd.github+json"
+      Authorization: "Bearer {{ PAT }}"
+    body_format: json
+    body:
+      permission: "{{ permission }}"
+    status_code: 204
+  ignore_errors: true

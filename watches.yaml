@@ -1,0 +1,10 @@
+---
+# Use the 'create api' subcommand to add watches to this file.
+- version: v1
+  group: github.repository.team.nttdata.com
+  kind: GithubRepositoryTeam
+  playbook: playbooks/githubrepositoryteam-create.yml
+  finalizer:
+    name: github.repository.team.nttdata.com
+    playbook: playbooks/githubrepositoryteam-delete.yml
+#+kubebuilder:scaffold:watch
